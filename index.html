@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&family=Bagel+Fat+One&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #F6F6EA; }
+  * { box-sizing: border-box; }
+  a { color: #060606; }
+  a:hover { color: #019EDF; }
+  @keyframes wucb-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+<meta name="ext-resource-dependency" content="assets/tee_so_faith_green.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_child_of_god.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_earth_angel.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_beautiful_soul.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_faith_warrior.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_gangsta_for_god.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_meek_not_weak.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_313_blessed.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_peace_be_still.jpg">
+<meta name="ext-resource-dependency" content="assets/tee_gods_sunshine.jpg">
+<meta name="ext-resource-dependency" content="assets/jacket_be_covered.jpg">
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#060606"></rect><circle cx="100" cy="100" r="52" fill="#F9B627"></circle><text x="100" y="118" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="30" font-weight="bold" fill="#060606">WUCB</text></svg></template>
+<div style="font-family: Outfit, Helvetica, sans-serif; color: #060606; background: #F6F6EA; min-height: 100vh; font-size: 18px; line-height: 1.55;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(246,246,234,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(6,6,6,0.1);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 12px clamp(16px, 4vw, 40px); display: flex; align-items: center; gap: 20px;">
+      <div onClick="{{ goHome }}" style="display: flex; align-items: center; cursor: pointer; flex: 0 0 auto; margin-right: auto;">
+        <img src="assets/logo.png" alt="Wear U Can Be T Shirt Ministry" style="height: {{ logoH }}; width: auto; display: block;">
+      </div>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: flex; gap: 22px; align-items: center; flex: 0 1 auto;">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+            <div onClick="{{ item.go }}" style="cursor: pointer; white-space: nowrap; font-size: 15px; font-weight: {{ item.weight }}; letter-spacing: 0.01em; color: {{ item.color }}; padding: 4px 0; border-bottom: 2px solid {{ item.rule }};" style-hover="color: #019EDF;">{{ item.label }}</div>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <div onClick="{{ goOrder }}" style="flex: 0 0 auto; cursor: pointer; background: {{ orderBg }}; color: {{ orderFg }}; font-weight: 800; font-size: 15px; padding: 11px 20px; border-radius: 999px; white-space: nowrap;" style-hover="background: #060606; color: #F9B627;">Order Here</div>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ toggleMenu }}" aria-label="Menu" style="flex: 0 0 auto; cursor: pointer; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 999px; border: 1.5px solid rgba(6,6,6,0.22); font-size: 20px; line-height: 1; color: #060606;" style-hover="border-color: #060606;">{{ menuIcon }}</div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav style="border-top: 1px solid rgba(6,6,6,0.1); padding: 8px clamp(16px, 4vw, 40px) 18px; display: flex; flex-direction: column;">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+          <div onClick="{{ item.go }}" style="cursor: pointer; font-size: 19px; font-weight: {{ item.weight }}; color: {{ item.color }}; padding: 14px 0; border-bottom: 1px solid rgba(6,6,6,0.08);">{{ item.label }}</div>
+        </sc-for>
+        <a href="tel:17349260618" style="text-decoration: none; font-size: 19px; font-weight: 800; color: #060606; padding: 16px 0 4px;">734 926 0618</a>
+      </nav>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="background: #060606; color: #F6F6EA;">
+      <div style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px, 5vw, 64px); align-items: center;">
+        <div>
+          <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #F9B627; font-weight: 700; margin-bottom: 22px;">Detroit, Michigan</div>
+          <h1 style="font-size: clamp(44px, 6.2vw, 86px); line-height: 0.96; font-weight: 900; letter-spacing: -0.03em; margin: 0 0 24px; text-wrap: balance;">Sow a Seed by Wearing The Word.</h1>
+          <p style="font-size: 20px; line-height: 1.5; color: rgba(246,246,234,0.82); margin: 0 0 36px; max-width: 44ch;">Custom faith based tees, hand cut and made with love in Detroit. For all ages.</p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <div onClick="{{ goShop }}" style="cursor: pointer; background: #F9B627; color: #060606; font-weight: 800; padding: 16px 32px; border-radius: 999px; font-size: 17px;" style-hover="background: #F6F6EA;">See the Designs</div>
+            <div onClick="{{ goCustom }}" style="cursor: pointer; border: 1.5px solid rgba(246,246,234,0.4); color: #F6F6EA; font-weight: 700; padding: 16px 32px; border-radius: 999px; font-size: 17px;" style-hover="border-color: #F6F6EA;">Start a Custom Order</div>
+          </div>
+        </div>
+        <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3.4;">
+          <img src="assets/display_wall.jpg" alt="Rack of hand made faith tees" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>
+    </section>
+
+    <div style="background: #F9B627; color: #060606; overflow: hidden; padding: 16px 0; border-bottom: 1px solid rgba(6,6,6,0.12);">
+      <div style="display: flex; width: max-content; animation: wucb-marquee 38s linear infinite; font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: 26px; white-space: nowrap;">
+        <span style="padding-right: 40px;">Be Peace &nbsp;&#9679;&nbsp; Be Still &nbsp;&#9679;&nbsp; Child of God &nbsp;&#9679;&nbsp; Earth Angel &nbsp;&#9679;&nbsp; Gotta Have Faith &nbsp;&#9679;&nbsp; Beyond Blessed &nbsp;&#9679;&nbsp; 313 Blessed &nbsp;&#9679;&nbsp;</span>
+        <span style="padding-right: 40px;">Be Peace &nbsp;&#9679;&nbsp; Be Still &nbsp;&#9679;&nbsp; Child of God &nbsp;&#9679;&nbsp; Earth Angel &nbsp;&#9679;&nbsp; Gotta Have Faith &nbsp;&#9679;&nbsp; Beyond Blessed &nbsp;&#9679;&nbsp; 313 Blessed &nbsp;&#9679;&nbsp;</span>
+      </div>
+    </div>
+
+    <section style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 7vw, 104px) clamp(20px, 4vw, 40px);">
+      <div style="display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px;">
+        <h2 style="font-size: clamp(30px, 3.6vw, 46px); font-weight: 900; letter-spacing: -0.025em; margin: 0;">The Collections</h2>
+        <div onClick="{{ goShop }}" style="cursor: pointer; font-weight: 700; font-size: 16px; border-bottom: 2px solid #F9B627;">See all designs</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+        <div onClick="{{ goShop }}" style="cursor: pointer; grid-column: {{ spanTwo }}; min-width: 0; background: #019EDF; border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: {{ bentoInner }}; align-items: end; min-height: 300px;">
+          <div style="padding: 26px 30px;">
+            <div style="font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: 30px; color: #F6F6EA; line-height: 1.1;">Child of God</div>
+            <div style="color: rgba(246,246,234,0.85); font-size: 16px; margin-top: 8px;">Be Peace. Be Still.</div>
+          </div>
+          <img src="assets/tee_child_of_god.jpg" alt="Child of God tee" style="width: 100%; height: {{ bentoImgH }}; object-fit: cover; display: block;">
+        </div>
+        <div onClick="{{ goShop }}" style="cursor: pointer; background: #E63532; border-radius: 16px; overflow: hidden; min-height: 300px; display: flex; flex-direction: column;">
+          <img src="assets/tee_faith_warrior.jpg" alt="Faith Warrior tee" style="width: 100%; flex: 1 1 auto; object-fit: cover; display: block; min-height: 0;">
+          <div style="padding: 22px 24px; font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: 24px; color: #F6F6EA;">Warriors</div>
+        </div>
+        <div onClick="{{ goShop }}" style="cursor: pointer; background: #75B94C; border-radius: 16px; overflow: hidden; min-height: 300px; display: flex; flex-direction: column;">
+          <img src="assets/tee_313_blessed.jpg" alt="313 Blessed tee" style="width: 100%; flex: 1 1 auto; object-fit: cover; display: block; min-height: 0;">
+          <div style="padding: 22px 24px; font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: 24px; color: #F6F6EA;">Blessed</div>
+        </div>
+        <div onClick="{{ goShop }}" style="cursor: pointer; background: #F9D54B; border-radius: 16px; overflow: hidden; min-height: 300px; display: flex; flex-direction: column;">
+          <img src="assets/tee_gods_sunshine.jpg" alt="Kids sunshine tee" style="width: 100%; flex: 1 1 auto; object-fit: cover; display: block; min-height: 0;">
+          <div style="padding: 22px 24px; font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: 24px; color: #060606;">Kids</div>
+        </div>
+        <div onClick="{{ goShop }}" style="cursor: pointer; background: #F9B627; border-radius: 16px; overflow: hidden; min-height: 300px; display: flex; flex-direction: column;">
+          <img src="assets/tee_so_faith_green.jpg" alt="So Faith tee" style="width: 100%; flex: 1 1 auto; object-fit: cover; display: block; min-height: 0;">
+          <div style="padding: 22px 24px; font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: 24px; color: #060606;">I Got Faith</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #060606; color: #F6F6EA;">
+      <div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 7vw, 100px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 64px); align-items: center;">
+        <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 1 / 1;">
+          <img src="assets/people_family.jpg" alt="Family wearing custom tees" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div>
+          <h2 style="font-size: clamp(30px, 3.8vw, 50px); font-weight: 900; letter-spacing: -0.025em; line-height: 1.02; margin: 0 0 20px;">Made by hand, one at a time.</h2>
+          <p style="font-size: 19px; color: rgba(246,246,234,0.8); margin: 0; max-width: 42ch;">Every letter is cut by hand and pressed with prayer. No two shirts are exactly alike, and that is how it is supposed to be.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 900px; margin: 0 auto; padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 40px); text-align: center;">
+      <p style="font-size: clamp(24px, 3vw, 38px); font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; margin: 0 0 24px; text-wrap: balance;">&ldquo;I am called to uplift and encourage my people to be in alignment with God&rsquo;s truth.&rdquo;</p>
+      <div style="font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: rgba(6,6,6,0.55);">Tye Hemingway</div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isShop }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 6vw, 80px) clamp(20px, 4vw, 40px);">
+    <h1 style="font-size: clamp(38px, 5.4vw, 68px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 18px;">Faith &amp; Fashion with a Purpose.</h1>
+    <p style="font-size: 19px; color: rgba(6,6,6,0.68); margin: 0 0 36px; max-width: 52ch;">A look at the designs. Pick your Word, pick your color. Youth through Plus.</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <div onClick="{{ f.go }}" style="cursor: pointer; padding: 9px 20px; border-radius: 999px; font-size: 15px; font-weight: 700; background: {{ f.bg }}; color: {{ f.fg }}; border: 1.5px solid rgba(6,6,6,0.14);">{{ f.label }}</div>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+      <sc-for list="{{ designs }}" as="d" hint-placeholder-count="9">
+        <div style="min-width: 0;">
+          <div style="border-radius: 16px; overflow: hidden; background: {{ d.tile }}; aspect-ratio: 4 / 5;">
+            <img src="{{ d.img }}" alt="{{ d.name }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-top: 14px;">
+            <div style="font-weight: 800; font-size: 18px;">{{ d.name }}</div>
+            <div style="font-size: 15px; color: rgba(6,6,6,0.55); white-space: nowrap;">{{ d.meta }}</div>
+          </div>
+          <div style="font-size: 14px; color: rgba(6,6,6,0.5); margin-top: 2px;">{{ d.collection }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top: 56px; background: #060606; color: #F6F6EA; border-radius: 16px; padding: clamp(28px, 4vw, 48px); display: flex; gap: 24px; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em;">Do not see your Word?</div>
+        <div style="color: rgba(246,246,234,0.75); margin-top: 6px;">Every shirt is made to order anyway.</div>
+      </div>
+      <div onClick="{{ goCustom }}" style="cursor: pointer; background: #F9B627; color: #060606; font-weight: 800; padding: 15px 30px; border-radius: 999px;">Start a Custom Order</div>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCustom }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 6vw, 80px) clamp(20px, 4vw, 40px) 0;">
+      <h1 style="font-size: clamp(38px, 5.4vw, 68px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 18px; max-width: 16ch;">Tell us the Word. We will make it wearable.</h1>
+      <p style="font-size: 19px; color: rgba(6,6,6,0.68); margin: 0; max-width: 50ch;">One shirt or four hundred. Churches, reunions, outreach days, tributes.</p>
+    </section>
+    <section style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+      <sc-for list="{{ occasions }}" as="o" hint-placeholder-count="4">
+        <div style="min-width: 0; border-radius: 16px; background: {{ o.bg }}; color: {{ o.fg }}; padding: 26px; min-height: 150px; display: flex; align-items: flex-end; font-size: 21px; font-weight: 800; letter-spacing: -0.015em;">{{ o.label }}</div>
+      </sc-for>
+    </section>
+    <section style="background: #060606; color: #F6F6EA;">
+      <div style="max-width: 1240px; margin: 0 auto; padding: clamp(52px, 7vw, 96px) clamp(20px, 4vw, 40px);">
+        <h2 style="font-size: clamp(28px, 3.4vw, 42px); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 40px;">How it works</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 32px;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <div style="min-width: 0; border-top: 2px solid #F9B627; padding-top: 18px;">
+              <div style="font-size: 15px; font-weight: 800; color: #F9B627; margin-bottom: 10px;">{{ s.n }}</div>
+              <div style="font-size: 18px; color: rgba(246,246,234,0.86);">{{ s.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width: 780px; margin: 0 auto; padding: clamp(52px, 7vw, 96px) clamp(20px, 4vw, 40px); text-align: center;">
+      <h2 style="font-size: clamp(28px, 3.4vw, 42px); font-weight: 900; letter-spacing: -0.025em; margin: 0 0 16px;">Ready when you are.</h2>
+      <p style="font-size: 18px; color: rgba(6,6,6,0.68); margin: 0 0 30px;">Call or text Tye with your idea, your scripture and your sizes.</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:17349260618" style="text-decoration: none; background: #F9B627; color: #060606; font-weight: 800; padding: 16px 32px; border-radius: 999px;" style-hover="background: #060606; color: #F9B627;">734 926 0618</a>
+        <a href="mailto:wearucanbetshirts@gmail.com" style="text-decoration: none; border: 1.5px solid rgba(6,6,6,0.25); color: #060606; font-weight: 700; padding: 16px 32px; border-radius: 999px;" style-hover="border-color: #060606;">Email the ministry</a>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCrochet }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 6vw, 80px) clamp(20px, 4vw, 40px);">
+    <h1 style="font-size: clamp(38px, 5.4vw, 68px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 18px;">Warm feet, warm hearts.</h1>
+    <p style="font-size: 19px; color: rgba(6,6,6,0.68); margin: 0 0 40px; max-width: 48ch;">Hand crocheted footies, knee high socks, leg warmers and beanies. Stitched one row at a time. Most pieces are one size fits all.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch;">
+      <div style="min-width: 0; border-radius: 16px; overflow: hidden; min-height: 340px;">
+        <img src="assets/crochet_beanie.jpg" alt="Hand crocheted beanie and footies" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <div style="background: #019EDF; color: #F6F6EA; border-radius: 16px; padding: clamp(24px, 3vw, 36px);">
+          <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; opacity: 0.85; margin-bottom: 18px;">The pieces</div>
+          <sc-for list="{{ crochet }}" as="c" hint-placeholder-count="4">
+            <div style="display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid {{ c.rule }};">
+              <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.015em;">{{ c.name }}</div>
+              <div style="font-size: 15px; opacity: 0.85; white-space: nowrap;">{{ c.meta }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background: #F9B627; color: #060606; border-radius: 16px; padding: clamp(24px, 3vw, 36px); display: flex; align-items: center;">
+          <div style="font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2;">Walk n Faith. One size fits all.</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 48px; border-top: 1px solid rgba(6,6,6,0.14); padding-top: 28px; display: flex; gap: 20px; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div style="font-size: 19px; font-weight: 700;">Colors made to request.</div>
+      <a href="tel:17349260618" style="text-decoration: none; background: #F9B627; color: #060606; font-weight: 800; padding: 14px 28px; border-radius: 999px;" style-hover="background: #060606; color: #F9B627;">Ask for a color</a>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isMinistry }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 6vw, 80px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 60px); align-items: center;">
+      <div>
+        <h1 style="font-size: clamp(38px, 5.4vw, 68px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 22px;">Not just a shirt. A seed.</h1>
+        <p style="font-size: 19px; color: rgba(6,6,6,0.7); margin: 0 0 16px; max-width: 46ch;">Wear U Can Be started with a calling: to uplift and encourage people to be in alignment with God&rsquo;s truth. Tye Hemingway turned that calling into something you can put on.</p>
+        <p style="font-size: 19px; color: rgba(6,6,6,0.7); margin: 0; max-width: 46ch;">Every letter is cut by hand in Detroit. All the proceeds go back to God.</p>
+      </div>
+      <div style="border-radius: 16px; aspect-ratio: 4 / 5; border: 1.5px dashed rgba(6,6,6,0.28); background: repeating-linear-gradient(135deg, rgba(6,6,6,0.045) 0 10px, transparent 10px 20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 24px;">
+        <div style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(6,6,6,0.6);">Image here</div>
+        <div style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; color: rgba(6,6,6,0.42); max-width: 26ch; line-height: 1.5;">portrait of Tye</div>
+      </div>
+    </section>
+    <section style="background: #060606; color: #F6F6EA;">
+      <div style="max-width: 1000px; margin: 0 auto; padding: clamp(56px, 7vw, 104px) clamp(20px, 4vw, 40px);">
+        <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #F9B627; font-weight: 700; margin-bottom: 28px;">What we believe</div>
+        <sc-for list="{{ beliefs }}" as="b" hint-placeholder-count="3">
+          <div style="font-size: clamp(26px, 3.4vw, 44px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; padding: 16px 0; border-bottom: 1px solid rgba(246,246,234,0.16);">{{ b }}</div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width: 860px; margin: 0 auto; padding: clamp(56px, 7vw, 104px) clamp(20px, 4vw, 40px); text-align: center;">
+      <h2 style="font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.15; margin: 0 0 20px;">Sow a Seed by Wearing The Word</h2>
+      <p style="font-size: 19px; color: rgba(6,6,6,0.7); margin: 0 auto; max-width: 52ch;">When you wear the Word, you carry it into places a sermon might never reach. The grocery store, the job, the block. That is the ministry.</p>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isOutreach }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 6vw, 80px) clamp(20px, 4vw, 40px);">
+    <h1 style="font-size: clamp(38px, 5.4vw, 68px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 18px; max-width: 15ch;">Giving back is the mission.</h1>
+    <p style="font-size: 19px; color: rgba(6,6,6,0.68); margin: 0 0 44px; max-width: 52ch;">Y.O.U.N.G. Love of God Community Outreach serves Detroit with clothing, groceries, resume help and more.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-bottom: 22px;">
+      <div style="min-width: 0; background: #019EDF; color: #F6F6EA; border-radius: 16px; padding: clamp(26px, 3.5vw, 40px);">
+        <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; opacity: 0.85; margin-bottom: 14px;">Every August</div>
+        <div style="font-size: clamp(26px, 3vw, 36px); font-weight: 900; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 14px;">Unity in &ldquo;D&rdquo; Community Day</div>
+        <p style="margin: 0; font-size: 17px; color: rgba(246,246,234,0.9); max-width: 40ch;">Faith, fun and fellowship at PK Park. Games, food, school supplies, a barber and a raffle. All ages welcome.</p>
+      </div>
+      <div style="min-width: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3;">
+        <img src="assets/outreach_tent.jpg" alt="Outreach event tent" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px;">
+      <div style="min-width: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3;">
+        <img src="assets/flyer_socks_of_love.jpg" alt="Socks of Love sock drive flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div style="min-width: 0; background: #75B94C; color: #F6F6EA; border-radius: 16px; padding: clamp(26px, 3.5vw, 40px);">
+        <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; opacity: 0.85; margin-bottom: 14px;">Winter drive</div>
+        <div style="font-size: clamp(26px, 3vw, 36px); font-weight: 900; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 14px;">Socks of Love</div>
+        <p style="margin: 0; font-size: 17px; color: rgba(246,246,234,0.92); max-width: 40ch;">Making a social impact one pair of socks at a time. All sizes accepted at our drop off partners.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; border-top: 1px solid rgba(6,6,6,0.14); padding-top: 32px; display: flex; gap: 24px; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div style="max-width: 46ch;">
+        <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px;">Get involved</div>
+        <div style="font-size: 17px; color: rgba(6,6,6,0.65);">Donate items, sponsor the community day or volunteer. Donations are not tax deductible.</div>
+      </div>
+      <a href="tel:13136245306" style="text-decoration: none; background: #F9B627; color: #060606; font-weight: 800; padding: 14px 28px; border-radius: 999px; white-space: nowrap;" style-hover="background: #060606; color: #F9B627;">313 624 5306</a>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width: 1240px; margin: 0 auto; padding: clamp(44px, 6vw, 80px) clamp(20px, 4vw, 40px);">
+    <h1 style="font-size: clamp(38px, 5.4vw, 68px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin: 0 0 18px;">Order Here</h1>
+    <p style="font-size: 19px; color: rgba(6,6,6,0.68); margin: 0 0 44px; max-width: 48ch;">Tell us what you need. Tye replies by call or text with a price, then payment places your order.</p>
+
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #060606; color: #F6F6EA; border-radius: 16px; padding: clamp(32px, 5vw, 64px); margin-bottom: 52px;">
+        <div style="font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: clamp(28px, 3.4vw, 44px); color: #F9B627; line-height: 1.15; margin-bottom: 16px;">Thank you so so much.</div>
+        <p style="font-size: 19px; color: rgba(246,246,234,0.82); margin: 0 0 28px; max-width: 46ch;">Your request is in. Tye will reach out with a design and a price. Payment is required to place the order.</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="tel:17349260618" style="text-decoration: none; background: #F9B627; color: #060606; font-weight: 800; padding: 15px 30px; border-radius: 999px;" style-hover="background: #F6F6EA;">734 926 0618</a>
+          <div onClick="{{ reset }}" style="cursor: pointer; border: 1.5px solid rgba(246,246,234,0.4); color: #F6F6EA; font-weight: 700; padding: 15px 30px; border-radius: 999px;" style-hover="border-color: #F6F6EA;">Send another</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <form onSubmit="{{ submit }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start; margin-bottom: 60px;">
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 30px;">
+
+        <div>
+          <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: rgba(6,6,6,0.55); margin-bottom: 14px;">What are you ordering</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+            <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="2">
+              <div onClick="{{ k.go }}" style="cursor: pointer; min-width: 0; border: 1.5px solid {{ k.border }}; background: {{ k.bg }}; color: {{ k.fg }}; border-radius: 12px; padding: 18px 20px;">
+                <div style="font-weight: 800; font-size: 18px;">{{ k.label }}</div>
+                <div style="font-size: 14px; color: {{ k.sub }}; margin-top: 3px;">{{ k.note }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <sc-if value="{{ isExisting }}" hint-placeholder-val="{{ true }}">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <label style="min-width: 0; display: block;">
+              <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Design</div>
+              <select value="{{ f.design.value }}" onChange="{{ f.design.onChange }}" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+                <option value="">Choose a design</option>
+                <sc-for list="{{ designNames }}" as="n" hint-placeholder-count="11">
+                  <option value="{{ n }}">{{ n }}</option>
+                </sc-for>
+              </select>
+            </label>
+            <label style="min-width: 0; display: block;">
+              <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Shirt color</div>
+              <input value="{{ f.color.value }}" onChange="{{ f.color.onChange }}" placeholder="Neon lime, teal, black" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+            </label>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isCustomKind }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <label style="display: block;">
+              <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Your wording or scripture</div>
+              <textarea value="{{ f.wording.value }}" onChange="{{ f.wording.onChange }}" rows="3" placeholder="Exactly how you want it to read" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606; resize: vertical;"></textarea>
+            </label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+              <label style="min-width: 0; display: block;">
+                <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Occasion</div>
+                <select value="{{ f.occasion.value }}" onChange="{{ f.occasion.onChange }}" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+                  <option value="">Choose an occasion</option>
+                  <sc-for list="{{ occasions2 }}" as="o" hint-placeholder-count="6">
+                    <option value="{{ o }}">{{ o }}</option>
+                  </sc-for>
+                </select>
+              </label>
+              <label style="min-width: 0; display: block;">
+                <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Shirt colors</div>
+                <input value="{{ f.color.value }}" onChange="{{ f.color.onChange }}" placeholder="Royal blue with gold letters" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+              </label>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+          <label style="min-width: 0; display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Size</div>
+            <select value="{{ f.size.value }}" onChange="{{ f.size.onChange }}" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+              <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3">
+                <option value="{{ s }}">{{ s }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="min-width: 0; display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Sleeve</div>
+            <select value="{{ f.sleeve.value }}" onChange="{{ f.sleeve.onChange }}" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+              <sc-for list="{{ sleeves }}" as="s" hint-placeholder-count="3">
+                <option value="{{ s }}">{{ s }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="min-width: 0; display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Quantity</div>
+            <input value="{{ f.qty.value }}" onChange="{{ f.qty.onChange }}" type="number" min="1" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+          </label>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <label style="min-width: 0; display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Needed by</div>
+            <input value="{{ f.date.value }}" onChange="{{ f.date.onChange }}" type="date" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+          </label>
+          <label style="min-width: 0; display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Pickup or ship</div>
+            <select value="{{ f.delivery.value }}" onChange="{{ f.delivery.onChange }}" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+              <sc-for list="{{ deliveries }}" as="d" hint-placeholder-count="2">
+                <option value="{{ d }}">{{ d }}</option>
+              </sc-for>
+            </select>
+          </label>
+        </div>
+
+        <div style="border-top: 1px solid rgba(6,6,6,0.14); padding-top: 26px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <label style="min-width: 0; display: block;">
+              <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Your name</div>
+              <input value="{{ f.name.value }}" onChange="{{ f.name.onChange }}" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+            </label>
+            <label style="min-width: 0; display: block;">
+              <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Phone</div>
+              <input value="{{ f.phone.value }}" onChange="{{ f.phone.onChange }}" type="tel" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+            </label>
+          </div>
+          <label style="display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Email</div>
+            <input value="{{ f.email.value }}" onChange="{{ f.email.onChange }}" type="email" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606;">
+          </label>
+          <label style="display: block;">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 7px;">Anything else</div>
+            <textarea value="{{ f.notes.value }}" onChange="{{ f.notes.onChange }}" rows="3" placeholder="Size breakdown for groups, names and numbers, questions" style="width: 100%; font-family: Outfit, sans-serif; font-size: 17px; padding: 13px 14px; border-radius: 8px; border: 1.5px solid rgba(6,6,6,0.22); background: #FFFFFF; color: #060606; resize: vertical;"></textarea>
+          </label>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <button type="submit" style="cursor: pointer; font-family: Outfit, sans-serif; border: none; background: #F9B627; color: #060606; font-weight: 800; font-size: 17px; padding: 17px 36px; border-radius: 999px;" style-hover="background: #060606; color: #F9B627;">Send my order request</button>
+          <div style="font-size: 15px; color: rgba(6,6,6,0.55); max-width: 30ch;">Payment is required to place your order.</div>
+        </div>
+      </div>
+
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3;">
+          <img src="assets/display_wall.jpg" alt="Hand made tees on the rack" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div style="background: #060606; color: #F6F6EA; border-radius: 16px; padding: clamp(24px, 3vw, 34px);">
+          <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: #F9B627; margin-bottom: 16px;">Rather talk it through</div>
+          <a href="tel:17349260618" style="display: block; text-decoration: none; color: #F6F6EA; font-size: clamp(24px, 2.6vw, 32px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px;" style-hover="color: #F9B627;">734 926 0618</a>
+          <a href="mailto:wearucanbetshirts@gmail.com" style="display: block; text-decoration: none; color: rgba(246,246,234,0.75); font-size: 16px; overflow-wrap: anywhere; margin-bottom: 8px;" style-hover="color: #F9B627;">wearucanbetshirts<wbr>@gmail.com</a>
+          <a href="https://www.facebook.com/tiesha.hemingway" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: rgba(246,246,234,0.75); font-size: 16px;" style-hover="color: #F9B627;">Facebook</a>
+          <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(246,246,234,0.2); font-size: 15px; color: rgba(246,246,234,0.6);">Detroit, Michigan. Serving the whole 313 and beyond.</div>
+        </div>
+      </div>
+    </form>
+    </sc-if>
+
+    <div style="margin-top: 12px; border-top: 1px solid rgba(6,6,6,0.14); padding-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; align-items: center;">
+      <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 10;">
+        <img src="assets/people_faith_hop.jpg" alt="Wearing a Faith Hop tee" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div style="font-family: 'Bagel Fat One', Outfit, sans-serif; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2;">Stay n prayer, keep yo faith up, and count yo blessings.</div>
+    </div>
+  </main>
+  </sc-if>
+
+  <footer style="background: #060606; color: rgba(246,246,234,0.7); margin-top: 0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
+      <div>
+        <div style="font-family: 'Bagel Fat One', Outfit, sans-serif; color: #F9B627; font-size: 22px; line-height: 1.2; margin-bottom: 10px;">Wear U Can Be</div>
+        <div style="font-size: 15px;">T Shirt Ministry &nbsp;&#9679;&nbsp; Detroit, MI</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px;">
+        <a href="tel:17349260618" style="color: rgba(246,246,234,0.7); text-decoration: none;" style-hover="color: #F9B627;">734 926 0618</a>
+        <a href="mailto:wearucanbetshirts@gmail.com" style="color: rgba(246,246,234,0.7); text-decoration: none;" style-hover="color: #F9B627;">wearucanbetshirts@gmail.com</a>
+        <a href="https://www.facebook.com/tiesha.hemingway" target="_blank" rel="noopener" style="color: rgba(246,246,234,0.7); text-decoration: none;" style-hover="color: #F9B627;">Facebook</a>
+      </div>
+      <div style="font-size: 15px; max-width: 34ch;">All custom made with LOVE. To God be the Glory.</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    page: "home", filter: "All", sent: false, narrow: false, menuOpen: false,
+    form: {
+      kind: "existing", design: "", color: "", size: "Adult S to XL", sleeve: "Short sleeve",
+      qty: "1", occasion: "", wording: "", date: "", delivery: "Pickup in Detroit",
+      name: "", phone: "", email: "", notes: ""
+    }
+  };
+
+  componentDidMount() {
+    this.onResize = () => {
+      const n = window.innerWidth < 900;
+      if (n !== this.state.narrow) this.setState({ narrow: n });
+    };
+    window.addEventListener("resize", this.onResize);
+    this.onResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
+  }
+
+  set(key, value) {
+    this.setState(s => ({ form: { ...s.form, [key]: value } }));
+  }
+
+  field(key) {
+    return { value: this.state.form[key], onChange: e => this.set(key, e.target.value) };
+  }
+
+  go(page) {
+    this.setState({ page, menuOpen: false });
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const narrow = this.state.narrow;
+    const pages = [
+      ["home", "Home"], ["shop", "Designs"], ["custom", "Custom Orders"],
+      ["crochet", "Crochet"], ["ministry", "Our Ministry"], ["outreach", "Outreach"]
+    ];
+    const all = [
+      { name: "So Faith", collection: "I Got Faith", meta: "5 colors", img: "assets/tee_so_faith_green.jpg", tile: "#F9B627" },
+      { name: "Child of God", collection: "Child of God", meta: "6 colors", img: "assets/tee_child_of_god.jpg", tile: "#019EDF" },
+      { name: "Earth Angel", collection: "Child of God", meta: "3 colors", img: "assets/tee_earth_angel.jpg", tile: "#019EDF" },
+      { name: "Beautiful Soul", collection: "Child of God", meta: "3 colors", img: "assets/tee_beautiful_soul.jpg", tile: "#019EDF" },
+      { name: "Faith Warrior", collection: "Warriors", meta: "2 colors", img: "assets/tee_faith_warrior.jpg", tile: "#E63532" },
+      { name: "Gangsta for God", collection: "Warriors", meta: "3 colors", img: "assets/tee_gangsta_for_god.jpg", tile: "#E63532" },
+      { name: "Meek Not Weak", collection: "Warriors", meta: "Charcoal", img: "assets/tee_meek_not_weak.jpg", tile: "#E63532" },
+      { name: "313 Blessed", collection: "Blessed", meta: "Navy", img: "assets/tee_313_blessed.jpg", tile: "#75B94C" },
+      { name: "Peace Be Still", collection: "Scripture", meta: "Green", img: "assets/tee_peace_be_still.jpg", tile: "#75B94C" },
+      { name: "God's Sunshine", collection: "Kids", meta: "Youth sizes", img: "assets/tee_gods_sunshine.jpg", tile: "#F9D54B" },
+      { name: "Be Covered in Faith", collection: "Jackets", meta: "Zip jacket", img: "assets/jacket_be_covered.jpg", tile: "#0A4465" }
+    ];
+    const names = ["All", "I Got Faith", "Child of God", "Warriors", "Blessed", "Scripture", "Kids", "Jackets"];
+    return {
+      isHome: p === "home", isShop: p === "shop", isCustom: p === "custom",
+      isCrochet: p === "crochet", isMinistry: p === "ministry",
+      isOutreach: p === "outreach", isContact: p === "contact",
+      goHome: () => this.go("home"),
+      goShop: () => this.go("shop"),
+      goCustom: () => this.go("custom"),
+      goOrder: () => this.go("contact"),
+      narrow,
+      wide: !narrow,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      menuIcon: this.state.menuOpen ? "\u2715" : "\u2630",
+      logoH: narrow ? "44px" : "62px",
+      spanTwo: narrow ? "span 1" : "span 2",
+      bentoInner: narrow ? "1fr" : "1fr 1fr",
+      bentoImgH: narrow ? "220px" : "300px",
+      orderBg: p === "contact" ? "#060606" : "#F9B627",
+      orderFg: p === "contact" ? "#F9B627" : "#060606",
+      nav: pages.map(([key, label]) => ({
+        label, go: () => this.go(key),
+        weight: p === key ? 800 : 500,
+        color: p === key ? "#060606" : "rgba(6,6,6,0.6)",
+        rule: p === key ? "#F9B627" : "transparent"
+      })),
+      filters: names.map(n => ({
+        label: n,
+        go: () => this.setState({ filter: n }),
+        bg: this.state.filter === n ? "#060606" : "transparent",
+        fg: this.state.filter === n ? "#F6F6EA" : "#060606"
+      })),
+      designs: this.state.filter === "All" ? all : all.filter(d => d.collection === this.state.filter),
+      crochet: [
+        { name: "Comfy Footies", meta: "One size fits all" },
+        { name: "Knee High Socks", meta: "Made to order" },
+        { name: "Leg Warmers", meta: "Made to order" },
+        { name: "Beanies", meta: "Adult and youth" }
+      ].map((c, i, a) => ({ ...c, rule: i === a.length - 1 ? "transparent" : "rgba(246,246,234,0.25)" })),
+      occasions: [
+        { label: "Churches and Ministries", bg: "#019EDF", fg: "#F6F6EA" },
+        { label: "Family Reunions", bg: "#F9B627", fg: "#060606" },
+        { label: "Outreach and Community Days", bg: "#75B94C", fg: "#F6F6EA" },
+        { label: "Tributes and Memorials", bg: "#060606", fg: "#F6F6EA" }
+      ],
+      steps: [
+        { n: "01", text: "Share your idea, your scripture and your sizes." },
+        { n: "02", text: "Tye calls or texts you with a design and a price." },
+        { n: "03", text: "Send payment to lock in your order." },
+        { n: "04", text: "Pick up in Detroit or we ship it to you." }
+      ],
+      beliefs: ["Speak peace into chaos.", "Speak hope into despair.", "Speak love into brokenness.", "Respect, honor, loyalty and trust."],
+      f: {
+        design: this.field("design"), color: this.field("color"), size: this.field("size"),
+        sleeve: this.field("sleeve"), qty: this.field("qty"), occasion: this.field("occasion"),
+        wording: this.field("wording"), date: this.field("date"), delivery: this.field("delivery"),
+        name: this.field("name"), phone: this.field("phone"), email: this.field("email"),
+        notes: this.field("notes")
+      },
+      isExisting: this.state.form.kind === "existing",
+      isCustomKind: this.state.form.kind === "custom",
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      kinds: [
+        { key: "existing", label: "An existing design", note: "Pick from the collections" },
+        { key: "custom", label: "A custom design", note: "Your own Word or scripture" }
+      ].map(k => ({
+        ...k,
+        go: () => this.setState(s => ({ form: { ...s.form, kind: k.key } })),
+        bg: this.state.form.kind === k.key ? "#060606" : "transparent",
+        fg: this.state.form.kind === k.key ? "#F6F6EA" : "#060606",
+        sub: this.state.form.kind === k.key ? "rgba(246,246,234,0.7)" : "rgba(6,6,6,0.55)",
+        border: this.state.form.kind === k.key ? "#060606" : "rgba(6,6,6,0.2)"
+      })),
+      designNames: all.map(d => d.name),
+      sizes: ["Youth", "Adult S to XL", "Plus"],
+      sleeves: ["Short sleeve", "Long sleeve", "Jacket or hoodie"],
+      occasions2: ["Church or ministry", "Family reunion", "Outreach or community day", "Birthday or Mother's Day", "Tribute or memorial", "Just for me"],
+      deliveries: ["Pickup in Detroit", "Ship to me"],
+      submit: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "instant" }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
