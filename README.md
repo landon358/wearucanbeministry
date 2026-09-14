@@ -30,7 +30,7 @@ Home, Designs, Custom Orders, Crochet, Our Ministry, Outreach, Order Here.
 
 ## Still to wire up
 
-- The order form is front end only. Point `submit` at a form endpoint (Formspree, Netlify Forms) or an SMS relay so requests reach 734 926 0618 and wearucanbetshirts@gmail.com.
+- The order form posts to Netlify Forms as `order`. It only works when the site is deployed on Netlify. On GitHub Pages it shows an error asking people to call or text. In Netlify, open Forms, then Form notifications, and add an email notification to wearucanbetshirts@gmail.com.
 - Our Ministry has an "Image here" placeholder waiting on a portrait.
 - Prices are deliberately absent until confirmed.
 - Crochet needs new photography shot off the branded blanket.

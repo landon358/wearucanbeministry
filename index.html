@@ -317,7 +317,7 @@
     </sc-if>
 
     <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
-    <form onSubmit="{{ submit }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start; margin-bottom: 60px;">
+    <form name="order" method="POST" onSubmit="{{ submit }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start; margin-bottom: 60px;">
       <div style="min-width: 0; display: flex; flex-direction: column; gap: 30px;">
 
         <div>
@@ -434,9 +434,12 @@
         </div>
 
         <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-          <button type="submit" style="cursor: pointer; font-family: Outfit, sans-serif; border: none; background: #F9B627; color: #060606; font-weight: 800; font-size: 17px; padding: 17px 36px; border-radius: 999px;" style-hover="background: #060606; color: #F9B627;">Send my order request</button>
+          <button type="submit" style="cursor: pointer; font-family: Outfit, sans-serif; border: none; background: #F9B627; color: #060606; font-weight: 800; font-size: 17px; padding: 17px 36px; border-radius: 999px;" style-hover="background: #060606; color: #F9B627;">{{ submitLabel }}</button>
           <div style="font-size: 15px; color: rgba(6,6,6,0.55); max-width: 30ch;">Payment is required to place your order.</div>
         </div>
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <div style="background: rgba(230,53,50,0.1); border: 1.5px solid #E63532; color: #060606; border-radius: 12px; padding: 14px 18px; font-size: 16px;">{{ error }}</div>
+        </sc-if>
       </div>
 
       <div style="min-width: 0; display: flex; flex-direction: column; gap: 20px;">
@@ -482,7 +485,7 @@
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
   state = {
-    page: "home", filter: "All", sent: false, narrow: false, menuOpen: false,
+    page: "home", filter: "All", sent: false, sending: false, error: "", narrow: false, menuOpen: false,
     form: {
       kind: "existing", design: "", color: "", size: "Adult S to XL", sleeve: "Short sleeve",
       qty: "1", occasion: "", wording: "", date: "", delivery: "Pickup in Detroit",
@@ -509,6 +512,29 @@ class Component extends DCLogic {
 
   field(key) {
     return { value: this.state.form[key], onChange: e => this.set(key, e.target.value) };
+  }
+
+  async submit() {
+    const form = this.state.form;
+    if (this.state.sending) return;
+    if (!form.name.trim() || (!form.phone.trim() && !form.email.trim())) {
+      this.setState({ error: "Please add your name and a phone number or email so Tye can reach you." });
+      return;
+    }
+    this.setState({ sending: true, error: "" });
+    try {
+      // Netlify Forms: POST url encoded fields plus form-name to the site root
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ "form-name": "order", ...form }).toString()
+      });
+      if (!res.ok) throw new Error("Status " + res.status);
+      this.setState({ sending: false, sent: true });
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "instant" });
+    } catch (err) {
+      this.setState({ sending: false, error: "Your request did not send. Please call or text Tye at 734 926 0618." });
+    }
   }
 
   go(page) {
@@ -615,11 +641,34 @@ class Component extends DCLogic {
       sleeves: ["Short sleeve", "Long sleeve", "Jacket or hoodie"],
       occasions2: ["Church or ministry", "Family reunion", "Outreach or community day", "Birthday or Mother's Day", "Tribute or memorial", "Just for me"],
       deliveries: ["Pickup in Detroit", "Ship to me"],
-      submit: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "instant" }); },
-      reset: () => this.setState({ sent: false })
+      submitLabel: this.state.sending ? "Sending..." : "Send my order request",
+      hasError: !!this.state.error,
+      error: this.state.error,
+      submit: e => { if (e && e.preventDefault) e.preventDefault(); this.submit(); },
+      reset: () => this.setState({ sent: false, error: "" })
     };
   }
 }
 </script>
+<!-- Netlify Forms: the order form is rendered by JavaScript, so this static copy lets Netlify detect it at deploy time. -->
+<form name="order" netlify netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="order" />
+  <p><label>Leave blank <input name="bot-field" /></label></p>
+  <input type="text" name="kind" />
+  <input type="text" name="design" />
+  <input type="text" name="color" />
+  <input type="text" name="size" />
+  <input type="text" name="sleeve" />
+  <input type="text" name="qty" />
+  <input type="text" name="occasion" />
+  <textarea name="wording"></textarea>
+  <input type="text" name="date" />
+  <input type="text" name="delivery" />
+  <input type="text" name="name" />
+  <input type="text" name="phone" />
+  <input type="text" name="email" />
+  <textarea name="notes"></textarea>
+  <button type="submit">Send</button>
+</form>
 </body>
 </html>
